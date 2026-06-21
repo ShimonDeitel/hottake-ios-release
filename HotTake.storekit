@@ -1,0 +1,40 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "HOTTAKE_STOREKIT_CONFIG",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : true,
+      "internalID" : "hottake_pro_unlock_id",
+      "localizations" : [
+        {
+          "description" : "Unlock every deck, write your own custom statements, see your game history and share the reveal. One-time purchase.",
+          "displayName" : "Hot Take Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "hottake_pro_unlock",
+      "referenceName" : "Hot Take Pro Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
