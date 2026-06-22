@@ -20,7 +20,7 @@ struct ProfilesView: View {
                         if profiles.isEmpty {
                             emptyState
                         } else {
-                            profilesCard
+                            profilesSection
                             historySection
                         }
                     }
@@ -59,6 +59,15 @@ struct ProfilesView: View {
         .padding(.vertical, 40)
     }
 
+    @ViewBuilder
+    private var profilesSection: some View {
+        if store.isPro {
+            profilesCard
+        } else {
+            profilesLocked
+        }
+    }
+
     private var profilesCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Hot Take leaderboard").font(.headline)
@@ -92,6 +101,36 @@ struct ProfilesView: View {
             }
         }
         .htCard()
+    }
+
+    private var profilesLocked: some View {
+        Button {
+            Haptics.tap(); showPaywall = true
+        } label: {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Text("Hot Take leaderboard").font(.headline)
+                    Spacer()
+                    Image(systemName: "lock.fill")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(Color.htAccent)
+                }
+                Text("Watch everyone's opinion profile build over time — scores, flame wins and per-player stats across every game.")
+                    .font(.subheadline).foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack(spacing: 8) {
+                    Image(systemName: "lock.fill").font(.caption.weight(.bold))
+                    Text("Unlock full profiles with Hot Take Pro").font(.footnote)
+                    Spacer(minLength: 0)
+                    Image(systemName: "chevron.right").font(.caption.weight(.bold))
+                }
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 16).padding(.vertical, 12)
+                .background(Color.htField, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .htCard()
+        }
+        .buttonStyle(.plain)
     }
 
     @ViewBuilder
